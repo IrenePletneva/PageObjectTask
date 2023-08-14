@@ -2,40 +2,43 @@ package demoqa.test;
 
 import demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
+import demoqa.utils.TestsData;
+
 
 public class RegistrationPageTest extends BaseTest {
 
+
     RegistrationPage registrationPage = new RegistrationPage();
+    TestsData testData = new TestsData();
 
     @Test
-    void registrationTest() {
+    void fillingAllFieldsTest() {
 
         registrationPage.openPage()
-                .removeFixedBanner()
                 .removeFooter()
-                .setFirstName("Test")
-                .setLastName("Test")
-                .setUserEmail("test@test.com")
-                .setGender("Female")
-                .setUserNumber("8980362893")
-                .setBirthDay("January", "1990", "11")
-                .setSubjects("Math")
-                .setHobbies("Sports")
-                .uploadPicture("img.jpg")
-                .setAddress("Test address")
-                .setState("NCR")
-                .setCity("Gurgaon")
+                .setFirstName(testData.randomFirstName)
+                .setLastName(testData.randomLastName)
+                .setUserEmail(testData.randomEmail)
+                .setGender(testData.randomGender)
+                .setUserNumber(testData.randomPhone)
+                .setBirthDay(testData.randomMonth, testData.randomYear,testData.randomDay)
+                .setSubjects(testData.randomSubjects)
+                .setHobbies(testData.randomHobbies)
+                .uploadPicture(testData.defaultImage)
+                .setAddress(testData.randomAddress)
+                .setState(testData.randomState)
+                .setCity(testData.randomCity)
                 .clickOnSubmitButton();
 
-        registrationPage.checkOverResults("Student Name", "Test Test")
-                .checkOverResults("Student Email", "test@test.com")
-                .checkOverResults("Gender", "Female")
-                .checkOverResults("Mobile", "8980362893")
-                .checkOverResults("Date of Birth", "11 January,1990")
-                .checkOverResults("Subjects", "Maths")
-                .checkOverResults("Hobbies", "Sports")
-                .checkOverResults("Picture", "img.jpg")
-                .checkOverResults("Address", "Test address")
-                .checkOverResults("State and City", "NCR Gurgaon");
+        registrationPage.checkOverResults("Student Name", testData.randomFirstName + " " + testData.randomLastName)
+                .checkOverResults("Student Email", testData.randomEmail)
+                .checkOverResults("Gender", testData.randomGender)
+                .checkOverResults("Mobile", testData.randomPhone)
+                .checkOverResults("Date of Birth", testData.randomDay + " " + testData.randomMonth + "," + testData.randomYear)
+                .checkOverResults("Subjects", String.join(", ", testData.randomSubjects))
+                .checkOverResults("Hobbies", String.join(", ", testData.randomHobbies))
+                .checkOverResults("Picture", testData.defaultImage)
+                .checkOverResults("Address", testData.randomAddress)
+                .checkOverResults("State and City", testData.randomState + " " + testData.randomCity);
     }
 }

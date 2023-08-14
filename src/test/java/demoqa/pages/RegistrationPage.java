@@ -3,6 +3,8 @@ package demoqa.pages;
 import com.codeborne.selenide.SelenideElement;
 import demoqa.pages.components.CalendarComponent;
 
+import java.util.List;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -85,15 +87,18 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setSubjects(String value) {
-        subjectsInput.setValue(value).pressEnter();
 
+    public RegistrationPage setSubjects(List<String> subjects) {
+        for (String subject : subjects) {
+            subjectsInput.setValue(subject).pressEnter();
+        }
         return this;
     }
 
-    public RegistrationPage setHobbies(String value) {
-        hobbiesInput.$(byText(value)).click();
-
+    public RegistrationPage setHobbies(List<String> hobbies) {
+        for (String hobby : hobbies ) {
+            hobbiesInput.setValue(hobby).pressEnter();
+        }
         return this;
     }
 
