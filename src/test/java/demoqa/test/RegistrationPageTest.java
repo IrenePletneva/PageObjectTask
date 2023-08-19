@@ -6,8 +6,6 @@ import demoqa.utils.TestsData;
 
 
 public class RegistrationPageTest extends BaseTest {
-
-
     RegistrationPage registrationPage = new RegistrationPage();
     TestsData testData = new TestsData();
 
@@ -22,8 +20,8 @@ public class RegistrationPageTest extends BaseTest {
                 .setGender(testData.randomGender)
                 .setUserNumber(testData.randomPhone)
                 .setBirthDay(testData.randomMonth, testData.randomYear,testData.randomDay)
-                .setSubjects(testData.randomSubjects)
-                .setHobbies(testData.randomHobbies)
+                .setSubjects(testData.randomSubject)
+                .setHobby(testData.randomHobby)
                 .uploadPicture(testData.defaultImage)
                 .setAddress(testData.randomAddress)
                 .setState(testData.randomState)
@@ -35,8 +33,8 @@ public class RegistrationPageTest extends BaseTest {
                 .checkOverResults("Gender", testData.randomGender)
                 .checkOverResults("Mobile", testData.randomPhone)
                 .checkOverResults("Date of Birth", testData.randomDay + " " + testData.randomMonth + "," + testData.randomYear)
-                .checkOverResults("Subjects", String.join(", ", testData.randomSubjects))
-                .checkOverResults("Hobbies", String.join(", ", testData.randomHobbies))
+                .checkOverResults("Subjects", String.join(", ", testData.randomSubject))
+                .checkOverResults("Hobbies", String.join(", ", testData.randomHobby))
                 .checkOverResults("Picture", testData.defaultImage)
                 .checkOverResults("Address", testData.randomAddress)
                 .checkOverResults("State and City", testData.randomState + " " + testData.randomCity);

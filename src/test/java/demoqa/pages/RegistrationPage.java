@@ -21,21 +21,26 @@ public class RegistrationPage {
             userNumberInput = $("#userNumber"),
             birthDateInput = $("#dateOfBirthInput"),
             subjectsInput = $("#subjectsInput"),
-            hobbiesInput = $("#hobbiesWrapper"),
+            hobbyInput = $("#hobbiesWrapper"),
             pictureUpload = $("#uploadPicture"),
             addressInput = $("#currentAddress"),
-            state = $("#stateCity-wrapper #state"),
             stateInput = $("#state"),
+            stateCityInput = $("#stateCity-wrapper"),
             city = $("#stateCity-wrapper #city"),
             cityInput = $("#city"),
             submitButton = $("#submit"),
-            overTable = $(".table-responsive");
-
+            overTable = $(".table-responsive"),
+            titleRegistrationForm = $(".practice-form-wrapper");
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
-
+        titleRegistrationForm.shouldHave(text("Student Registration Form"));
+        deleteBanners();
         return this;
+    }
+    public void deleteBanners() {
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
     }
 
     public RegistrationPage removeFixedBanner() {
@@ -88,17 +93,15 @@ public class RegistrationPage {
     }
 
 
-    public RegistrationPage setSubjects(List<String> subjects) {
-        for (String subject : subjects) {
-            subjectsInput.setValue(subject).pressEnter();
-        }
+    public RegistrationPage setSubjects(String value) {
+        subjectsInput.setValue(value).pressEnter();
+
         return this;
     }
 
-    public RegistrationPage setHobbies(List<String> hobbies) {
-        for (String hobby : hobbies ) {
-            hobbiesInput.setValue(hobby).pressEnter();
-        }
+    public RegistrationPage setHobby(String value) {
+        hobbyInput.$(byText(value)).click();
+
         return this;
     }
 
@@ -115,8 +118,8 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setState(String value) {
-        state.click();
-        stateInput.$(byText(value)).click();
+        stateInput.click();
+        stateCityInput.$(byText(value)).click();
 
         return this;
     }

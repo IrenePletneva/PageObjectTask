@@ -35,16 +35,15 @@ public class RandomUtils {
         return fakerEng.numerify("##########");
     }
 
-    public static List<String> getRandomSubjects() {
-        int rndNum = getRandomInt(0, subjects.size());
-        shuffle(subjects);
-        return subjects.subList(0, rndNum);
+    public static String getRandomSubject() {
+        String[] subjects =  {"Accounting", "Arts", "Biology", "Chemistry", "Civics", "Economics",
+                "English", "Commerce", "Computer Science", "Physics", "Maths", "Hindi", "History", "Social Studies"};
+        return new Faker().options().option(subjects);
     }
+    public static String getRandomHobbies() {
+        String[] hobby = {"Sports", "Reading", "Music"};
 
-    public static List<String> getRandomHobbies() {
-        int rndNum = getRandomInt(0, hobbies.size());
-        shuffle(hobbies);
-        return hobbies.subList(0, rndNum);
+        return new Faker().options().option(hobby);
     }
 
     public String getRandomAddress() {
