@@ -13,20 +13,14 @@ public class TestsData {
             randomPhone = randomUtils.getRandomPhone(),
             randomAddress = randomUtils.getRandomAddress(),
             randomState = randomUtils.getRandomState(),
-            randomCity = getRandomCity(randomState),
+            randomCity = randomUtils.getRandomCity(randomState),
             randomMonth = randomUtils.getRandomMonth(),
             randomYear = randomUtils.getRandomYear(),
             randomDay = randomUtils.getRandomDay(),
-            randomSubject = getRandomSubject(),
-            randomHobby = getRandomHobbies(),
+            randomSubject = randomUtils.getRandomSubject(),
+            randomHobby = randomUtils.getRandomHobbies(),
             defaultImage = "img.jpg";
 
-
-
-
-
-//    public List<String> subjectValue = getRandomSubjects(),
-//            hobieValue = getRandomHobbies();
 }
 
 

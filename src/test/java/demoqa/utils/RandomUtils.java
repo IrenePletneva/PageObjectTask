@@ -4,16 +4,14 @@ import com.github.javafaker.Faker;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static java.util.Collections.shuffle;
-
 public class RandomUtils {
     private Faker fakerEng = new Faker(new Locale("en"));
-    private static String[] genders = {"Male", "Female", "Other"};
-    private static String[] months = {"January", "February", "March", "April", "May", "June",
+    private String[] genders = {"Male", "Female", "Other"};
+    private String[] months = {"January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"};
-    private static List<String> subjects = Arrays.asList("Maths", "English", "Physics", "Chemistry", "Computer Science");
-    private static List<String> hobbies = Arrays.asList("Sports", "Reading", "Music");
-    private static String[] state = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
+    private List<String> subjects = Arrays.asList("Maths", "English", "Physics", "Chemistry", "Computer Science");
+    private List<String> hobbies = Arrays.asList("Sports", "Reading", "Music");
+    private String[] state = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
 
     public String getRandomFirstName() {
         return fakerEng.name().firstName();
@@ -35,12 +33,12 @@ public class RandomUtils {
         return fakerEng.numerify("##########");
     }
 
-    public static String getRandomSubject() {
+    public String getRandomSubject() {
         String[] subjects =  {"Accounting", "Arts", "Biology", "Chemistry", "Civics", "Economics",
                 "English", "Commerce", "Computer Science", "Physics", "Maths", "Hindi", "History", "Social Studies"};
         return new Faker().options().option(subjects);
     }
-    public static String getRandomHobbies() {
+    public String getRandomHobbies() {
         String[] hobby = {"Sports", "Reading", "Music"};
 
         return new Faker().options().option(hobby);
@@ -54,7 +52,7 @@ public class RandomUtils {
         return fakerEng.options().option(state);
     }
 
-    public static String getRandomCity(String state) {
+    public String getRandomCity(String state) {
         switch (state) {
             case "NCR": {
                 String[] city = {"Delhi", "Gurgaon", "Noida"};
@@ -90,7 +88,7 @@ public class RandomUtils {
         return Integer.parseInt(day) > 10 ? day : "0" + day;
     }
 
-    public static int getRandomInt(int min, int max) {
+    public int getRandomInt(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 }
