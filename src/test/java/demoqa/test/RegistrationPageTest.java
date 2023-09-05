@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import demoqa.utils.TestsData;
 
 
-public class RegistrationPageTest extends BaseTest {
+public class RegistrationPageTest extends RemoteTestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     TestsData testData = new TestsData();
 
