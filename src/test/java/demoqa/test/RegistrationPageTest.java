@@ -2,6 +2,8 @@ package demoqa.test;
 
 import demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.DisplayName;
 import demoqa.utils.TestsData;
 
 
@@ -10,6 +12,8 @@ public class RegistrationPageTest extends BaseTest {
     TestsData testData = new TestsData();
 
     @Test
+    @Tag("demoQA")
+    @DisplayName("Регистрация")
     void fillingAllFieldsTest() {
 
         registrationPage.openPage()
